@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  background-color: #DFE0E2;
+  padding: 14px 35px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.userIcon {
+  font-size: 32px;
+ }
