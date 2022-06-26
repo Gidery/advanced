@@ -1,11 +1,12 @@
-import logo from "../../../ui/Logo.svg";
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Icon from '@ant-design/icons';
+import { LogoIcon } from '../../../ui/LogoIcon';
 
 export const Logo = () => {
   return (
     <Link to="/">
-      <img alt="logo" src={logo} />
+      <Icon component={LogoIcon}></Icon>
     </Link>
   );
 };

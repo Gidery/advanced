@@ -1,7 +1,3 @@
 export const Directions = () => {
-  return (
-    <div>
-      Directions
-    </div>
-  )
-}
+  return <div>Directions</div>;
+};
