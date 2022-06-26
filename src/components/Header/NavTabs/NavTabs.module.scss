@@ -1,26 +1,7 @@
-@mixin common() {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 10px;
-  color: #382E33;
-  text-decoration: none;
-}
-
 .container {
   display: flex;
   gap: 20px;
   align-items: center;
   height: 100%;
   padding-left: 50px;
-}
-
-.tab {
-  @include common()
-}
-
-.active {
-  @include common();
-  background-color: #EFF4FF;
-  border-radius: 10px
 }
