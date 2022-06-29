@@ -5,12 +5,12 @@ export const Home = () => {
   const dispatch = useDispatch();
   const value = useSelector((state) => state.value);
 
-  const incrementHandler = () => {
-    dispatch({ type: 'INCREMENT', payload: 2 });
+  const incrementHandler = (value: number) => {
+    dispatch({ type: 'INCREMENT', payload: value });
   };
 
-  const decrementHandler = () => {
-    dispatch({ type: 'DECREMENT', payload: 3 });
+  const decrementHandler = (value: number) => {
+    dispatch({ type: 'DECREMENT', payload: value });
   };
 
   return (
@@ -18,8 +18,8 @@ export const Home = () => {
       Home
       <br />
       <span>{`value: ${value}`}</span>
-      <button onClick={incrementHandler}>increment</button>
-      <button onClick={decrementHandler}>decrement</button>
+      <button onClick={() => incrementHandler(3)}>increment</button>
+      <button onClick={() => decrementHandler(3)}>decrement</button>
     </div>
   );
 };
