@@ -1,56 +1,29 @@
 import React from 'react';
 import Divider from 'antd/lib/divider';
-import { List } from 'antd';
+import { Button, List } from 'antd';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCargo } from '../../redux/redusers/cargoReducer';
 
 export const Cargo = () => {
-  const cargoList = [
-    {
-      id: '1',
-      status: 'accepted',
-      cargoName: 'Cargo1',
-      goods: [
-        {
-          name: 'products',
-          quantity: 15
-        },
-        {
-          name: 'foods',
-          quantity: 20
-        },
-        {
-          name: 'iron',
-          quantity: 50
-        }
-      ]
-    },
-    {
-      id: '2',
-      status: 'delivered',
-      cargoName: 'second Cargo',
-      goods: [
-        {
-          name: 'toys',
-          quantity: 4
-        },
-        {
-          name: 'drugs',
-          quantity: 33
-        }
-      ]
-    }
-  ];
+  const dispatch = useDispatch();
+  const cargo = useSelector((state) => state.cargo);
+
+  const addCargoHandler = (name: string) => {
+    dispatch(addCargo({ name }));
+  };
 
   return (
     <div>
       <Divider orientation="left">Cargo</Divider>
+      <Button onClick={() => addCargoHandler(prompt())}>add cargo</Button>
       <List
         bordered
-        dataSource={cargoList}
-        renderItem={item => (
+        dataSource={cargo}
+        renderItem={(item) => (
           <List.Item>
             <List.Item.Meta
-              title={<Link to={`${item.id}`}>{item.cargoName}</Link>}
+              title={<Link to={`${item.id}`}>{item.name}</Link>}
             />
           </List.Item>
         )}

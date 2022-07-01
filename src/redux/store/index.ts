@@ -1,10 +1,10 @@
-import { combineReducers, createStore } from 'redux';
-import { valueReducer } from '../redusers/valueReducer';
-import { userReducer } from '../redusers/userReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import cargoReducer from '../redusers/cargoReducer';
+import directionsReducer from '../redusers/directionsReducer';
 
-const commonReducer = combineReducers({
-  value: valueReducer,
-  users: userReducer,
+export const store = configureStore({
+  reducer: {
+    cargo: cargoReducer,
+    directions: directionsReducer,
+  },
 });
-
-export const store = createStore(commonReducer);
