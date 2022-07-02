@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Divider from 'antd/lib/divider';
-import { Button, List } from 'antd';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Button, Drawer } from 'antd';
+
+import { CargoList } from './components/CargoList/CargoList';
+
 import { addCargo } from '../../redux/redusers/cargoReducer';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
+import { PlusOutlined } from '@ant-design/icons';
 
 export const Cargo = () => {
-  const dispatch = useDispatch();
-  const cargo = useSelector((state) => state.cargo);
+  const [openedDrawer, isOpenedDrawer] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const cargo = useAppSelector((state) => state.cargo);
+
+  const openDrawerHandler = (isOpen: boolean) => {
+    isOpenedDrawer(isOpen);
+  };
 
   const addCargoHandler = (name: string) => {
     dispatch(addCargo({ name }));
@@ -15,19 +23,24 @@ export const Cargo = () => {
 
   return (
     <div>
+      <Button
+        type="primary"
+        icon={<PlusOutlined />}
+        onClick={() => openDrawerHandler(true)}
+      >
+        add cargo
+      </Button>
+
+      <Drawer
+        title="Add cargo form"
+        visible={openedDrawer}
+        onClose={() => openDrawerHandler(false)}
+      >
+        <div>IS OPEN</div>
+      </Drawer>
+
       <Divider orientation="left">Cargo</Divider>
-      <Button onClick={() => addCargoHandler(prompt())}>add cargo</Button>
-      <List
-        bordered
-        dataSource={cargo}
-        renderItem={(item) => (
-          <List.Item>
-            <List.Item.Meta
-              title={<Link to={`${item.id}`}>{item.name}</Link>}
-            />
-          </List.Item>
-        )}
-      ></List>
+      <CargoList cargo={cargo} />
     </div>
   );
 };

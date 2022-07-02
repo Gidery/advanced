@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
 
 export const Directions = () => {
-  const dispatch = useDispatch();
-  const directions = useSelector((state) => state.directions);
+  const dispatch = useAppDispatch();
+  const directions = useAppSelector((state) => state.directions);
 
   return (
     <div>
