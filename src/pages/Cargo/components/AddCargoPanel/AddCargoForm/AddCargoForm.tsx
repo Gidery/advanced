@@ -1,96 +1,64 @@
 import React, { useState } from 'react';
-import { Button, Input, InputNumber } from 'antd';
+import { Input, Typography } from 'antd';
 import { InputName } from '../../../../../components/InputName/InputName';
-import { Goods } from '../../../../../redux/redusers/cargoReducer';
-import { PlusOutlined } from '@ant-design/icons';
+import { GoodsList } from './GoodsList/GoodsList';
+import { ButtonsPanel } from './ButtonsPanel/ButtonsPanel';
+import { Cargo } from '../../../../../redux/redusers/cargoReducer';
 import styles from './AddCargoForm.module.scss';
 
-export const AddCargoForm: React.FC = () => {
-  const [goods, setGoods] = useState<Goods[]>([
-    {
-      id: new Date().toISOString(),
-      name: '',
-      quantity: 0,
-    },
-  ]);
+interface AddCargoFormProps {
+  setOpenedDrawer: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-  const changeGoodsName = (
-    id: string,
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setGoods(
-      goods.map((item) => {
-        if (item.id !== id) return item;
-        return {
-          ...item,
-          name: e.target.value,
-        };
-      })
-    );
-  };
-
-  const changeGoodsNumber = (id: string, e?: number) => {
-    setGoods(
-      goods.map((item) => {
-        if (item.id !== id) return item;
-        if (e === undefined) return item;
-        return {
-          ...item,
-          quantity: e,
-        };
-      })
-    );
-  };
-
-  const addGoods = () => {
-    setGoods(
-      goods.concat({
+export const AddCargoForm: React.FC<AddCargoFormProps> = ({
+  setOpenedDrawer,
+}) => {
+  const { Text } = Typography;
+  const [error, setError] = useState<boolean>(false);
+  const [cargo, setCargo] = useState<Cargo>({
+    id: new Date().toISOString(),
+    status: null,
+    name: '',
+    goods: [
+      {
         id: new Date().toISOString(),
         name: '',
         quantity: 0,
-      })
-    );
+      },
+    ],
+  });
+
+  const addCargoName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCargo((prevState) => ({
+      ...prevState,
+      name: e.target.value,
+    }));
   };
 
   return (
     <div className={styles.Wrapper}>
+      {error && (
+        <Text className={styles.FullRow} type="danger">
+          All fields must be filled in
+        </Text>
+      )}
+
       <InputName name="Name: " className={styles.FullRow}>
-        <Input placeholder="Please input cargo name" className={styles.Name} />
+        <Input
+          className={styles.Name}
+          value={cargo.name}
+          placeholder="Please input cargo name"
+          onChange={addCargoName}
+        />
       </InputName>
 
-      <span className={styles.GoodsTitle}>Goods: </span>
-      <>
-        {goods.length > 0 &&
-          goods.map((item) => (
-            <div key={item.id} className={styles.GoodsWrapper}>
-              <Input
-                className={styles.GoodsName}
-                value={item.name}
-                onChange={(e) => changeGoodsName(item.id, e)}
-                placeholder="Goods name"
-              />
-              <InputNumber
-                className={styles.GoodsNumber}
-                value={item.quantity}
-                min={1}
-                max={100}
-                onChange={(e) => changeGoodsNumber(item.id, e)}
-              />
-            </div>
-          ))}
-      </>
-
-      <Button
-        onClick={addGoods}
-        className={styles.FullRow}
-        icon={<PlusOutlined />}
-      >
-        Add goods
-      </Button>
-
-      <Button type="primary" htmlType="submit">
-        Submit
-      </Button>
+      <GoodsList goods={cargo.goods} setCargo={setCargo} />
+      <ButtonsPanel
+        cargo={cargo}
+        setCargo={setCargo}
+        setError={setError}
+        setOpenedDrawer={setOpenedDrawer}
+      />
     </div>
   );
 };

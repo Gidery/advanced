@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface Cargo {
-  id: number;
+  id: string;
   name: string;
   status: null | 'accepted' | 'delivered';
   goods: Goods[];
@@ -15,7 +15,7 @@ export interface Goods {
 
 const initialState: Cargo[] = [
   {
-    id: 1,
+    id: '1',
     name: 'cargo template #1',
     status: null,
     goods: [
@@ -37,7 +37,7 @@ const initialState: Cargo[] = [
     ],
   },
   {
-    id: 2,
+    id: '2',
     name: 'cargo template #2',
     status: null,
     goods: [
@@ -54,15 +54,8 @@ export const cargoSlice = createSlice({
   name: 'cargo',
   initialState: initialState,
   reducers: {
-    addCargo: (state, action: PayloadAction<{ name: string }>) => {
-      const newCargo: Cargo = {
-        id: Math.random(),
-        name: action.payload.name,
-        status: null,
-        goods: [],
-      };
-
-      return state.concat(newCargo);
+    addCargo: (state, action: PayloadAction<Cargo>) => {
+      return state.concat(action.payload);
     },
   },
 });
