@@ -7,7 +7,8 @@ export interface Cargo {
   goods: Goods[];
 }
 
-interface Goods {
+export interface Goods {
+  id: string;
   name: string;
   quantity: number;
 }
@@ -19,14 +20,17 @@ const initialState: Cargo[] = [
     status: null,
     goods: [
       {
+        id: '1',
         name: 'products',
         quantity: 15,
       },
       {
+        id: '2',
         name: 'products',
         quantity: 15,
       },
       {
+        id: '3',
         name: 'products',
         quantity: 15,
       },
@@ -38,6 +42,7 @@ const initialState: Cargo[] = [
     status: null,
     goods: [
       {
+        id: '4',
         name: 'toys',
         quantity: 4,
       },

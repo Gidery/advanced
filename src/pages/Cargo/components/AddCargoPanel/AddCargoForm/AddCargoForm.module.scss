@@ -1,0 +1,29 @@
+.Wrapper {
+  display: grid;
+  row-gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+}
+
+.FullRow {
+  grid-column: 1/7;
+}
+
+.GoodsTitle {
+  grid-column: 1/2;
+  align-self: center;
+}
+
+.GoodsWrapper {
+  display: flex;
+  justify-content: space-between;
+  grid-column: 2/7;
+}
+
+.GoodsName {
+  max-width: 50%;
+}
+
+.GoodsNumber {
+  max-width: 40%;
+}
