@@ -1,0 +1,22 @@
+.GoodsTitle {
+  grid-column: 1/2;
+  align-self: center;
+}
+
+.GoodsWrapper {
+  display: flex;
+  justify-content: space-between;
+  grid-column: 2/7;
+}
+
+.GoodsName {
+  max-width: 40%;
+}
+
+.GoodsNumber {
+  max-width: 30%;
+}
+
+.FullRow {
+  grid-column: 1/7;
+}

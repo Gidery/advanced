@@ -1,3 +1,21 @@
+import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
+
 export const Directions = () => {
-  return <div>Directions</div>;
+  const dispatch = useAppDispatch();
+  const directions = useAppSelector((state) => state.directions);
+
+  return (
+    <div>
+      Directions
+      {directions.length > 0 &&
+        directions.map((direction) => (
+          <div>
+            {`
+              ${direction.name}
+              ${direction.start} - ${direction.end}
+            `}
+          </div>
+        ))}
+    </div>
+  );
 };

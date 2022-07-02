@@ -1,60 +1,17 @@
 import React from 'react';
 import Divider from 'antd/lib/divider';
-import { List } from 'antd';
-import { Link } from 'react-router-dom';
+import { CargoList } from './components/CargoList/CargoList';
+import { AddCargoPanel } from './components/AddCargoPanel/AddCargoPanel';
+import { useAppSelector } from '../../redux/hooks/hooks';
 
 export const Cargo = () => {
-  const cargoList = [
-    {
-      id: '1',
-      status: 'accepted',
-      cargoName: 'Cargo1',
-      goods: [
-        {
-          name: 'products',
-          quantity: 15
-        },
-        {
-          name: 'foods',
-          quantity: 20
-        },
-        {
-          name: 'iron',
-          quantity: 50
-        }
-      ]
-    },
-    {
-      id: '2',
-      status: 'delivered',
-      cargoName: 'second Cargo',
-      goods: [
-        {
-          name: 'toys',
-          quantity: 4
-        },
-        {
-          name: 'drugs',
-          quantity: 33
-        }
-      ]
-    }
-  ];
+  const cargo = useAppSelector((state) => state.cargo);
 
   return (
-    <div>
+    <>
+      <AddCargoPanel />
       <Divider orientation="left">Cargo</Divider>
-      <List
-        bordered
-        dataSource={cargoList}
-        renderItem={item => (
-          <List.Item>
-            <List.Item.Meta
-              title={<Link to={`${item.id}`}>{item.cargoName}</Link>}
-            />
-          </List.Item>
-        )}
-      ></List>
-    </div>
+      <CargoList cargo={cargo} />
+    </>
   );
 };
