@@ -5,7 +5,7 @@ import { Goods } from '../../../../../redux/redusers/cargoReducer';
 import { PlusOutlined } from '@ant-design/icons';
 import styles from './AddCargoForm.module.scss';
 
-export const AddCargoForm: React.FC<AddCargoFormProps> = () => {
+export const AddCargoForm: React.FC = () => {
   const [goods, setGoods] = useState<Goods[]>([
     {
       id: new Date().toISOString(),
