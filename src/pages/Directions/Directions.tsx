@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks/basicHooks';
 
 export const Directions = () => {
   const dispatch = useAppDispatch();

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export interface Cargo {
   id: string;
@@ -13,48 +14,16 @@ export interface Goods {
   quantity: number;
 }
 
-const initialState: Cargo[] = [
-  {
-    id: '1',
-    name: 'cargo template #1',
-    status: null,
-    goods: [
-      {
-        id: '1',
-        name: 'products',
-        quantity: 15,
-      },
-      {
-        id: '2',
-        name: 'products',
-        quantity: 15,
-      },
-      {
-        id: '3',
-        name: 'products',
-        quantity: 15,
-      },
-    ],
-  },
-  {
-    id: '2',
-    name: 'cargo template #2',
-    status: null,
-    goods: [
-      {
-        id: '4',
-        name: 'toys',
-        quantity: 4,
-      },
-    ],
-  },
-];
+const { storageValue, addItem } = useLocalStorage('cargo');
+
+const initialState: Cargo[] = storageValue;
 
 export const cargoSlice = createSlice({
   name: 'cargo',
   initialState: initialState,
   reducers: {
     addCargo: (state, action: PayloadAction<Cargo>) => {
+      addItem(action.payload);
       return state.concat(action.payload);
     },
   },

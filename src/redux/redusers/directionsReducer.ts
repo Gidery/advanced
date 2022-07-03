@@ -1,16 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Cargo } from './cargoReducer';
+
+export interface Directions {
+  id: string;
+  name: string;
+  start: string;
+  end: string;
+  cargo: Cargo[];
+}
+
+const initialState: Directions[] = [];
 
 export const directionsSlice = createSlice({
   name: 'directions',
-  initialState: [
-    {
-      id: 1,
-      name: 'direction template #1',
-      start: 'start point',
-      end: 'end point',
-      deliveredCargo: [],
-    },
-  ],
+  initialState: initialState,
   reducers: {},
 });
 
