@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import { Button, Typography } from 'antd';
 import { Link } from 'react-router-dom';
+import { Button, Typography } from 'antd';
 import {
-  Cargo,
-  deleteCargo,
-  editCargo,
-} from '../../../../redux/redusers/cargoReducer';
+  deleteDirection,
+  Direction,
+  editDirection,
+} from '../../../../redux/redusers/directionsReducer';
 import { useAppDispatch } from '../../../../redux/hooks/basicHooks';
 import styles from './ButtonsPanel.module.scss';
 
 interface ButtonsPanelProps {
-  cargo: Cargo;
-  setEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  direction: Direction;
   edit: boolean;
+  setEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ButtonsPanel: React.FC<ButtonsPanelProps> = ({
-  cargo,
+  direction,
   edit,
   setEdit,
 }) => {
@@ -24,25 +24,27 @@ export const ButtonsPanel: React.FC<ButtonsPanelProps> = ({
   const { Text } = Typography;
   const [error, setError] = useState<boolean>(false);
   const checkingEmptyFields =
-    cargo.name === '' ||
-    cargo.goods.find((item) => item.name === '' || item.quantity === 0);
-
-  const deleteItem = () => {
-    dispatch(deleteCargo(cargo.id));
-  };
-
-  const getEditItem = () => {
-    setEdit(true);
-  };
+    direction.name === '' ||
+    direction.start === '' ||
+    direction.end === '' ||
+    direction.processedCargo.length === 0;
 
   const setEditItem = () => {
     if (checkingEmptyFields) {
       setError(true);
       return;
     }
-    dispatch(editCargo(cargo));
+    dispatch(editDirection(direction));
     setError(false);
     setEdit(false);
+  };
+
+  const getEditItem = () => {
+    setEdit(true);
+  };
+
+  const deleteItem = () => {
+    dispatch(deleteDirection(direction.id));
   };
 
   return (
@@ -51,11 +53,11 @@ export const ButtonsPanel: React.FC<ButtonsPanelProps> = ({
         {edit ? (
           <Button onClick={setEditItem}>Save changes</Button>
         ) : (
-          <Button onClick={getEditItem}>Edit cargo</Button>
+          <Button onClick={getEditItem}>Edit direction</Button>
         )}
         <Button danger>
-          <Link onClick={deleteItem} to="/cargo">
-            Delete cargo
+          <Link onClick={deleteItem} to="/directions">
+            Delete direction
           </Link>
         </Button>
       </div>

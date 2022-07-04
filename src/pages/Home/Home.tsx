@@ -1,5 +1,18 @@
 import React from 'react';
+import { Typography } from 'antd';
 
 export const Home = () => {
-  return <div className="App-header">Home</div>;
+  const { Title, Paragraph } = Typography;
+
+  return (
+    <>
+      <Title level={2}>Welcome to my app</Title>
+      <Paragraph>
+        In the "Direction" tab, you can create and change cargo directions
+      </Paragraph>
+      <Paragraph>
+        In the "Cargo" tab you can can create and edit cargo
+      </Paragraph>
+    </>
+  );
 };

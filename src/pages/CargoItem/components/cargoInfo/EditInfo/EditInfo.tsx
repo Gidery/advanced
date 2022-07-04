@@ -6,25 +6,22 @@ import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
 import styles from '../Info.module.scss';
 
 interface EditInfoProps {
-  cargoItem: Cargo;
-  setCargoItem: React.Dispatch<React.SetStateAction<Cargo>>;
+  cargo: Cargo;
+  setCargo: React.Dispatch<React.SetStateAction<Cargo>>;
 }
 
-export const EditInfo: React.FC<EditInfoProps> = ({
-  cargoItem,
-  setCargoItem,
-}) => {
+export const EditInfo: React.FC<EditInfoProps> = ({ cargo, setCargo }) => {
   const { Text } = Typography;
 
   const editCargoName = (value: string) => {
-    setCargoItem((prevState) => ({
+    setCargo((prevState) => ({
       ...prevState,
       name: value,
     }));
   };
 
   const editGoodsName = (id: string, value: string) => {
-    setCargoItem((prevState) => ({
+    setCargo((prevState) => ({
       ...prevState,
       goods: prevState.goods.map((goods) => {
         if (goods.id !== id) return goods;
@@ -37,7 +34,7 @@ export const EditInfo: React.FC<EditInfoProps> = ({
   };
 
   const editGoodsNumber = (id: string, e: number) => {
-    setCargoItem((prevState) => ({
+    setCargo((prevState) => ({
       ...prevState,
       goods: prevState.goods.map((goods) => {
         if (goods.id !== id) return goods;
@@ -50,14 +47,14 @@ export const EditInfo: React.FC<EditInfoProps> = ({
   };
 
   const deleteGoods = (id: string) => {
-    setCargoItem((prevState) => ({
+    setCargo((prevState) => ({
       ...prevState,
       goods: prevState.goods.filter((goods) => goods.id !== id),
     }));
   };
 
   const addGoods = () => {
-    setCargoItem((prevState) => ({
+    setCargo((prevState) => ({
       ...prevState,
       goods: prevState.goods.concat({
         id: new Date().toISOString(),
@@ -76,7 +73,7 @@ export const EditInfo: React.FC<EditInfoProps> = ({
             onChange: editCargoName,
           }}
         >
-          {cargoItem.name}
+          {cargo.name}
         </Text>
       </InputName>
 
@@ -89,12 +86,12 @@ export const EditInfo: React.FC<EditInfoProps> = ({
           Goods:
         </Text>
         <div className={styles.GoodsWrapper}>
-          {cargoItem.goods.length === 0 && (
+          {cargo.goods.length === 0 && (
             <Text mark>Add any goods to the cargo</Text>
           )}
-          {cargoItem.goods.length > 0 &&
-            cargoItem.goods.map((goods) => (
-              <div className={styles.GoodsWrapper__wrapper}>
+          {cargo.goods.length > 0 &&
+            cargo.goods.map((goods) => (
+              <div key={goods.id} className={styles.GoodsWrapper__wrapper}>
                 <Text
                   editable={{
                     icon: <EditOutlined />,

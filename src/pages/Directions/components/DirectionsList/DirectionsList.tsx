@@ -11,7 +11,6 @@ interface DirectionsListProps {
 export const DirectionsList: React.FC<DirectionsListProps> = ({
   directions,
 }) => {
-  console.log('directions', directions);
   return (
     <List
       bordered

@@ -16,3 +16,9 @@
 .DeleteButton {
   align-self: center;
 }
+
+.DivWithKey {
+  grid-column: 2/7;
+  display: flex;
+  justify-content: space-between;
+}
