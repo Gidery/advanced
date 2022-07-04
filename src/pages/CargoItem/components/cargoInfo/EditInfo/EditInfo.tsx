@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, InputNumber, Typography } from 'antd';
-import { InputName } from '../../../../../../components/InputName/InputName';
-import { Cargo } from '../../../../../../redux/redusers/cargoReducer';
+import { InputName } from '../../../../../components/InputName/InputName';
+import { Cargo } from '../../../../../redux/redusers/cargoReducer';
 import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
 import styles from '../Info.module.scss';
 

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home/Home';
 import { Directions } from './pages/Directions/Directions';
 import { Cargo } from './pages/Cargo/Cargo';
-import { CargoItem } from './pages/Cargo/CargoItem/CargoItem';
+import { CargoItem } from './pages/CargoItem/CargoItem';
 import { Layout } from './components/Layout/Layout';
 import 'antd/dist/antd.css';
 

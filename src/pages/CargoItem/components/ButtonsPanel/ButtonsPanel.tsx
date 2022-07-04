@@ -5,8 +5,8 @@ import {
   Cargo,
   deleteCargo,
   editCargo,
-} from '../../../../../redux/redusers/cargoReducer';
-import { useAppDispatch } from '../../../../../redux/hooks/basicHooks';
+} from '../../../../redux/redusers/cargoReducer';
+import { useAppDispatch } from '../../../../redux/hooks/basicHooks';
 import styles from './ButtonsPanel.module.scss';
 
 interface ButtonsPanelProps {

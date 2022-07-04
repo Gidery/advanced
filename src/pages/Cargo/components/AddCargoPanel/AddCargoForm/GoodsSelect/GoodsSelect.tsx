@@ -2,14 +2,14 @@ import React from 'react';
 import { Button, Input, InputNumber } from 'antd';
 import { Cargo, Goods } from '../../../../../../redux/redusers/cargoReducer';
 import { DeleteOutlined } from '@ant-design/icons';
-import styles from './GoodsList.module.scss';
+import styles from './GoodsSelect.module.scss';
 
 interface GoodsListProps {
   goods: Goods[];
   setCargo: React.Dispatch<React.SetStateAction<Cargo>>;
 }
 
-export const GoodsList: React.FC<GoodsListProps> = ({ goods, setCargo }) => {
+export const GoodsSelect: React.FC<GoodsListProps> = ({ goods, setCargo }) => {
   const changeGoodsName = (
     id: string,
     e: React.ChangeEvent<HTMLInputElement>

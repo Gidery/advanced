@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from 'antd';
-import { InputName } from '../../../../../../components/InputName/InputName';
-import { Cargo } from '../../../../../../redux/redusers/cargoReducer';
+import { InputName } from '../../../../../components/InputName/InputName';
+import { Cargo } from '../../../../../redux/redusers/cargoReducer';
 import styles from '../Info.module.scss';
 
 interface InfoProps {

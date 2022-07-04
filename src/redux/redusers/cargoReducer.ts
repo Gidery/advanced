@@ -2,14 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export interface Cargo {
-  id: string;
+  readonly id: string;
   name: string;
-  status: null | 'accepted' | 'delivered';
   goods: Goods[];
 }
 
 export interface Goods {
-  id: string;
+  readonly id: string;
   name: string;
   quantity: number;
 }

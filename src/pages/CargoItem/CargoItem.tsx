@@ -4,8 +4,8 @@ import Divider from 'antd/lib/divider';
 import { ButtonsPanel } from './components/ButtonsPanel/ButtonsPanel';
 import { EditInfo } from './components/cargoInfo/EditInfo/EditInfo';
 import { Info } from './components/cargoInfo/Info/Info';
-import { Cargo } from '../../../redux/redusers/cargoReducer';
-import { useAppSelector } from '../../../redux/hooks/basicHooks';
+import { Cargo } from '../../redux/redusers/cargoReducer';
+import { useAppSelector } from '../../redux/hooks/basicHooks';
 
 export const CargoItem = () => {
   const { id } = useParams();

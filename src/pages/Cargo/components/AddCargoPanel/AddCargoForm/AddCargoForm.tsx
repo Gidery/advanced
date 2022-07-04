@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Typography } from 'antd';
 import { InputName } from '../../../../../components/InputName/InputName';
-import { GoodsList } from './GoodsList/GoodsList';
+import { GoodsSelect } from './GoodsSelect/GoodsSelect';
 import { ButtonsPanel } from './ButtonsPanel/ButtonsPanel';
 import { Cargo } from '../../../../../redux/redusers/cargoReducer';
 import styles from './AddCargoForm.module.scss';
@@ -17,7 +17,6 @@ export const AddCargoForm: React.FC<AddCargoFormProps> = ({
   const [error, setError] = useState<boolean>(false);
   const [cargo, setCargo] = useState<Cargo>({
     id: new Date().toISOString(),
-    status: null,
     name: '',
     goods: [
       {
@@ -45,14 +44,13 @@ export const AddCargoForm: React.FC<AddCargoFormProps> = ({
 
       <InputName name="Name: " className={styles.FullRow}>
         <Input
-          className={styles.Name}
           value={cargo.name}
           placeholder="Please input cargo name"
           onChange={addCargoName}
         />
       </InputName>
 
-      <GoodsList goods={cargo.goods} setCargo={setCargo} />
+      <GoodsSelect goods={cargo.goods} setCargo={setCargo} />
       <ButtonsPanel
         cargo={cargo}
         setCargo={setCargo}
