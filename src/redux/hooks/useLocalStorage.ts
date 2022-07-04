@@ -82,23 +82,23 @@ export const useLocalStorage = (itemKey: Key) => {
     return JSON.parse(itemValue);
   };
 
-  const addItem = (value: Cargo | Directions) => {
+  const addItem = (value: Cargo | Direction) => {
     const storageValue = getStorageValue();
     const newValue = storageValue.concat(value);
     localStorage.setItem(itemKey, JSON.stringify(newValue));
   };
 
-  const deleteItem = (id: Cargo['id'] | Directions['id']) => {
+  const deleteItem = (id: Cargo['id'] | Direction['id']) => {
     const storageValue = getStorageValue();
     const newValue = storageValue.filter(
-      (item: Cargo | Directions) => item.id !== id
+      (item: Cargo | Direction) => item.id !== id
     );
     localStorage.setItem(itemKey, JSON.stringify(newValue));
   };
 
-  const editItem = (value: Cargo | Directions) => {
+  const editItem = (value: Cargo | Direction) => {
     const storageValue = getStorageValue();
-    const newValue = storageValue.map((item: Cargo | Directions) => {
+    const newValue = storageValue.map((item: Cargo | Direction) => {
       if (item.id !== value.id) return item;
       return value;
     });
