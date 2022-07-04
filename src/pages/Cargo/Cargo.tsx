@@ -11,6 +11,7 @@ export const Cargo = () => {
     <>
       <AddCargoPanel />
       <Divider orientation="left">Cargo</Divider>
+      {cargo.length === 0 && <div>There is no data available to display</div>}
       <CargoList cargo={cargo} />
     </>
   );

@@ -27,7 +27,6 @@ export const ButtonsPanel: React.FC<ButtonsPanelProps> = ({
   const clearForm = () => {
     setCargo({
       id: new Date().toISOString(),
-      status: null,
       name: '',
       goods: [
         {
@@ -55,8 +54,9 @@ export const ButtonsPanel: React.FC<ButtonsPanelProps> = ({
       setError(true);
       return;
     }
-    setError(false);
     dispatch(addCargo(cargo));
+    clearForm();
+    setError(false);
     setOpenedDrawer(false);
   };
 
@@ -76,7 +76,7 @@ export const ButtonsPanel: React.FC<ButtonsPanelProps> = ({
         type="primary"
         htmlType="submit"
       >
-        Submit
+        Add cargo
       </Button>
 
       <Button className={styles.RightSide} onClick={clearForm}>

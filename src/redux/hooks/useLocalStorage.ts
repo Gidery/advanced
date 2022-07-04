@@ -1,12 +1,12 @@
 import { Cargo } from '../redusers/cargoReducer';
-import { Directions } from '../redusers/directionsReducer';
+import { Direction } from '../redusers/directionsReducer';
 
 type Key = 'cargo' | 'directions';
 
 export const useLocalStorage = (itemKey: Key) => {
   interface InitialStorage {
     cargo: Cargo[];
-    directions: Directions[];
+    directions: Direction[];
   }
 
   const initialStorage: InitialStorage = {
@@ -14,7 +14,6 @@ export const useLocalStorage = (itemKey: Key) => {
       {
         id: '1',
         name: 'Cargo with food',
-        status: null,
         goods: [
           {
             id: '1',
@@ -36,7 +35,6 @@ export const useLocalStorage = (itemKey: Key) => {
       {
         id: '2',
         name: 'Cargo with medicines',
-        status: null,
         goods: [
           {
             id: '4',
@@ -49,10 +47,23 @@ export const useLocalStorage = (itemKey: Key) => {
     directions: [
       {
         id: '1',
-        name: 'direction template #1',
-        start: 'start point',
-        end: 'end point',
-        cargo: [],
+        name: 'Main direction',
+        start: 'Moscow',
+        end: 'Voronezh',
+        processedCargo: [
+          {
+            id: '1',
+            name: 'Voronezh cargo',
+            status: 'delivered',
+            goods: [
+              {
+                id: '1',
+                name: 'product',
+                quantity: 13,
+              },
+            ],
+          },
+        ],
       },
     ],
   };
@@ -71,11 +82,28 @@ export const useLocalStorage = (itemKey: Key) => {
     return JSON.parse(itemValue);
   };
 
-  const addItem = (value: Cargo | Directions) => {
+  const addItem = (value: Cargo | Direction) => {
     const storageValue = getStorageValue();
     const newValue = storageValue.concat(value);
     localStorage.setItem(itemKey, JSON.stringify(newValue));
   };
 
-  return { storageValue: getStorageValue(), addItem };
+  const deleteItem = (id: Cargo['id'] | Direction['id']) => {
+    const storageValue = getStorageValue();
+    const newValue = storageValue.filter(
+      (item: Cargo | Direction) => item.id !== id
+    );
+    localStorage.setItem(itemKey, JSON.stringify(newValue));
+  };
+
+  const editItem = (value: Cargo | Direction) => {
+    const storageValue = getStorageValue();
+    const newValue = storageValue.map((item: Cargo | Direction) => {
+      if (item.id !== value.id) return item;
+      return value;
+    });
+    localStorage.setItem(itemKey, JSON.stringify(newValue));
+  };
+
+  return { storageValue: getStorageValue(), addItem, deleteItem, editItem };
 };

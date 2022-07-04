@@ -1,22 +1,37 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { Cargo } from './cargoReducer';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import { Cargo, Goods } from './cargoReducer';
 
-export interface Directions {
+export interface Direction {
   id: string;
   name: string;
   start: string;
   end: string;
-  cargo: Cargo[];
+  processedCargo: ProcessedCargo[];
 }
 
-const initialState: Directions[] = [];
+export interface ProcessedCargo extends Cargo {
+  readonly name: string;
+  readonly goods: Goods[];
+  status: 'accepted' | 'delivered';
+}
+
+const { storageValue, addItem, deleteItem, editItem } =
+  useLocalStorage('directions');
+
+const initialState: Direction[] = storageValue;
 
 export const directionsSlice = createSlice({
   name: 'directions',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    addDirection: (state, action: PayloadAction<Direction>) => {
+      addItem(action.payload);
+      return state.concat(action.payload);
+    },
+  },
 });
 
-export const {} = directionsSlice.actions;
+export const { addDirection } = directionsSlice.actions;
 
 export default directionsSlice.reducer;
