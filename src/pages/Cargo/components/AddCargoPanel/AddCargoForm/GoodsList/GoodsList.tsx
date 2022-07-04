@@ -26,12 +26,11 @@ export const GoodsList: React.FC<GoodsListProps> = ({ goods, setCargo }) => {
     }));
   };
 
-  const changeGoodsNumber = (id: string, e?: number) => {
+  const changeGoodsNumber = (id: string, e: number) => {
     setCargo((prevState) => ({
       ...prevState,
       goods: goods.map((item) => {
         if (item.id !== id) return item;
-        if (e === undefined) return item;
         return {
           ...item,
           quantity: e,

@@ -55,8 +55,8 @@ export const ButtonsPanel: React.FC<ButtonsPanelProps> = ({
       setError(true);
       return;
     }
-    setError(false);
     dispatch(addCargo(cargo));
+    setError(false);
     setOpenedDrawer(false);
   };
 

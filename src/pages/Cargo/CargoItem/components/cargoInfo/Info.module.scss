@@ -1,0 +1,32 @@
+.NameTitle {
+  margin-bottom: 10px;
+}
+
+.GoodsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.GoodsWrapper__wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 24px
+}
+
+.GoodsTitle {
+  margin-right: 8px;
+  font-size: medium;
+}
+
+.GoodsName {
+  margin-right: 20px;
+}
+
+.GoodsNumber {
+  max-width: 60px;
+}
+
+.GoodsDelete {
+  margin-left: 20px;
+}

@@ -77,5 +77,22 @@ export const useLocalStorage = (itemKey: Key) => {
     localStorage.setItem(itemKey, JSON.stringify(newValue));
   };
 
-  return { storageValue: getStorageValue(), addItem };
+  const deleteItem = (id: Cargo['id'] | Directions['id']) => {
+    const storageValue = getStorageValue();
+    const newValue = storageValue.filter(
+      (item: Cargo | Directions) => item.id !== id
+    );
+    localStorage.setItem(itemKey, JSON.stringify(newValue));
+  };
+
+  const editItem = (value: Cargo | Directions) => {
+    const storageValue = getStorageValue();
+    const newValue = storageValue.map((item: Cargo | Directions) => {
+      if (item.id !== value.id) return item;
+      return value;
+    });
+    localStorage.setItem(itemKey, JSON.stringify(newValue));
+  };
+
+  return { storageValue: getStorageValue(), addItem, deleteItem, editItem };
 };
