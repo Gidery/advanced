@@ -1,0 +1,25 @@
+.CargoTitle {
+  margin-right: 8px;
+  font-size: medium;
+}
+
+.CargoWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.CargoWrapper__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Flex {
+  display: flex;
+}
+
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

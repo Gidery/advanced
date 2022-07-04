@@ -29,9 +29,21 @@ export const directionsSlice = createSlice({
       addItem(action.payload);
       return state.concat(action.payload);
     },
+    deleteDirection: (state, action: PayloadAction<Direction['id']>) => {
+      deleteItem(action.payload);
+      return state.filter((direction) => direction.id !== action.payload);
+    },
+    editDirection: (state, action: PayloadAction<Direction>) => {
+      editItem(action.payload);
+      return state.map((direction) => {
+        if (direction.id !== action.payload.id) return direction;
+        return action.payload;
+      });
+    },
   },
 });
 
-export const { addDirection } = directionsSlice.actions;
+export const { addDirection, deleteDirection, editDirection } =
+  directionsSlice.actions;
 
 export default directionsSlice.reducer;

@@ -12,25 +12,23 @@ export const CargoItem = () => {
   const [item] = useAppSelector((state) =>
     state.cargo.filter((cargo) => cargo.id === id)
   );
-  const [cargoItem, setCargoItem] = useState<Cargo>(item);
+  const [cargo, setCargo] = useState<Cargo>(item);
   const [edit, setEdit] = useState<boolean>(false);
 
   return (
     <>
-      {id !== undefined && cargoItem && (
+      {id !== undefined && cargo && (
         <>
-          <ButtonsPanel cargoItem={cargoItem} edit={edit} setEdit={setEdit} />
+          <ButtonsPanel cargo={cargo} edit={edit} setEdit={setEdit} />
           <Divider orientation="left">Cargo item</Divider>
           {edit ? (
-            <EditInfo cargoItem={cargoItem} setCargoItem={setCargoItem} />
+            <EditInfo cargo={cargo} setCargo={setCargo} />
           ) : (
-            <Info cargoItem={cargoItem} />
+            <Info cargo={cargo} />
           )}
         </>
       )}
-      {id === undefined && cargoItem === undefined && (
-        <div>cargo item not found</div>
-      )}
+      {id === undefined || (cargo === undefined && <div>cargo not found</div>)}
     </>
   );
 };

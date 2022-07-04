@@ -1,0 +1,40 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Select {
+  max-width: 230px;
+}
+
+.TextWrapper {
+  grid-column: 2/5;
+  display: flex;
+  flex-direction: column;
+}
+
+.Flex {
+  display: flex;
+}
+
+.CargoTitle {
+  margin-right: 8px;
+  font-size: medium;
+}
+
+.CargoWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.CargoWrapper__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Button {
+  margin-left: 20px;
+  align-self: center;
+}
