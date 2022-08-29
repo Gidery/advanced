@@ -34,6 +34,8 @@ export const AddCargoForm: React.FC<AddCargoFormProps> = ({
     }));
   };
 
+  // todo вынести как Form и FullRow?
+
   return (
     <div className={styles.Wrapper}>
       {error && (
@@ -41,7 +43,6 @@ export const AddCargoForm: React.FC<AddCargoFormProps> = ({
           All fields must be filled in
         </Text>
       )}
-
       <InputName name="Name: " className={styles.FullRow}>
         <Input
           value={cargo.name}
@@ -49,8 +50,8 @@ export const AddCargoForm: React.FC<AddCargoFormProps> = ({
           onChange={addCargoName}
         />
       </InputName>
-
       <GoodsSelect goods={cargo.goods} setCargo={setCargo} />
+      // todo ButtonsPanel перенести в AddDrawer
       <ButtonsPanel
         cargo={cargo}
         setCargo={setCargo}

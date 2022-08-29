@@ -8,6 +8,8 @@ interface DirectionsListProps {
   directions: Direction[];
 }
 
+// todo вынести в /components как List
+
 export const DirectionsList: React.FC<DirectionsListProps> = ({
   directions,
 }) => {

@@ -1,15 +1,15 @@
 import React from 'react';
-import styles from './NavTabs.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Button } from 'antd';
+import styles from './NavTabs.module.scss';
 
 export const NavTabs = () => {
   const activeStyle = {
-    color: '#40a9ff'
+    color: '#40a9ff',
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.Container}>
       <Button type="text">
         <NavLink
           to="directions"

@@ -8,6 +8,8 @@ interface CargoListProps {
   cargo: Cargo[];
 }
 
+// todo вынести в /components как List
+
 export const CargoList: React.FC<CargoListProps> = ({ cargo }) => {
   return (
     <List

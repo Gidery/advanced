@@ -3,6 +3,8 @@ import { Button, Drawer } from 'antd';
 import { AddCargoForm } from './AddCargoForm/AddCargoForm';
 import { PlusOutlined } from '@ant-design/icons';
 
+//  todo вынести в /components как AddDrawer
+
 export const AddCargoPanel = () => {
   const [openedDrawer, setOpenedDrawer] = useState<boolean>(false);
 

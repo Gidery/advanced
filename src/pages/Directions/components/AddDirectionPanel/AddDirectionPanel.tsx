@@ -3,6 +3,8 @@ import { Button, Drawer } from 'antd';
 import { AddDirectionForm } from './AddDirectionForm/AddDirectionForm';
 import { PlusOutlined } from '@ant-design/icons';
 
+//  todo вынести в /components как AddDrawer
+
 export const AddDirectionPanel = () => {
   const [openedDrawer, setOpenedDrawer] = useState<boolean>(false);
 

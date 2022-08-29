@@ -1,8 +1,8 @@
-import { useAppSelector } from '../../redux/hooks/basicHooks';
-import Divider from 'antd/lib/divider';
 import React from 'react';
+import Divider from 'antd/lib/divider';
 import { DirectionsList } from './components/DirectionsList/DirectionsList';
 import { AddDirectionPanel } from './components/AddDirectionPanel/AddDirectionPanel';
+import { useAppSelector } from '../../redux/hooks/basicHooks';
 
 export const Directions = () => {
   const directions = useAppSelector((state) => state.directions);

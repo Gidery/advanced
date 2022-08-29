@@ -1,15 +1,15 @@
 import React from 'react';
-import { UserOutlined } from '@ant-design/icons';
-import styles from './Header.module.scss';
 import { NavTabs } from './NavTabs/NavTabs';
 import { Logo } from './Logo/Logo';
+import { UserOutlined } from '@ant-design/icons';
+import styles from './Header.module.scss';
 
 export const Header = () => (
-  <div className={styles.container}>
-    <nav className={styles.nav}>
+  <div className={styles.Container}>
+    <nav className={styles.Nav}>
       <Logo />
       <NavTabs />
     </nav>
-    <UserOutlined className={styles.userIcon} />
+    <UserOutlined className={styles.UserIcon} />
   </div>
 );

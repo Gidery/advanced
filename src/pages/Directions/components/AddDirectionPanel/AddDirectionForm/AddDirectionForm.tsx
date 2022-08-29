@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Typography } from 'antd';
-import Input from 'antd/es/input/Input';
+import { Input, Typography } from 'antd';
 import { InputName } from '../../../../../components/InputName/InputName';
 import { CargoSelect } from './CargoSelect/CargoSelect';
 import { ButtonsPanel } from './ButtonsPanel/ButtonsPanel';
@@ -41,6 +40,8 @@ export const AddDirectionForm: React.FC<AddDirectionFormProps> = ({
     }));
   };
 
+  // todo вынести как Form и FullRow?
+
   return (
     <div className={commonStyles.Wrapper}>
       {error && (
@@ -48,7 +49,6 @@ export const AddDirectionForm: React.FC<AddDirectionFormProps> = ({
           All fields must be filled in
         </Text>
       )}
-
       <InputName name="Name: " className={commonStyles.FullRow}>
         <Input
           value={direction.name}
@@ -56,7 +56,6 @@ export const AddDirectionForm: React.FC<AddDirectionFormProps> = ({
           onChange={addDirectionName}
         />
       </InputName>
-
       <InputName name="Start: " className={commonStyles.FullRow}>
         <Input
           value={direction.start}
@@ -64,7 +63,6 @@ export const AddDirectionForm: React.FC<AddDirectionFormProps> = ({
           onChange={(e) => addDirectionPoint('start', e)}
         />
       </InputName>
-
       <InputName name="End: " className={commonStyles.FullRow}>
         <Input
           value={direction.end}
@@ -72,11 +70,11 @@ export const AddDirectionForm: React.FC<AddDirectionFormProps> = ({
           onChange={(e) => addDirectionPoint('end', e)}
         />
       </InputName>
-
       <CargoSelect
         processedCargo={direction.processedCargo}
         setDirection={setDirection}
       />
+      // todo ButtonsPanel перенести в AddDrawer
       <ButtonsPanel
         direction={direction}
         setDirection={setDirection}
