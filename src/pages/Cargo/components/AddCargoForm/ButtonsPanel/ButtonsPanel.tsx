@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
-import { addCargo, Cargo } from '../../../../../../redux/redusers/cargoReducer';
-import { useAppDispatch } from '../../../../../../redux/hooks/basicHooks';
+import { addCargo, Cargo } from '../../../../../redux/redusers/cargoReducer';
+import { useAppDispatch } from '../../../../../redux/hooks/basicHooks';
 import { PlusOutlined } from '@ant-design/icons';
 import styles from './ButtonsPanel.module.scss';
 import commonStyles from '../AddCargoForm.module.scss';

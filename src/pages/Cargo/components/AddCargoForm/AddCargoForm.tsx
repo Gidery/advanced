@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Input, Typography } from 'antd';
-import { InputName } from '../../../../../components/InputName/InputName';
+import { InputName } from '../../../../components/InputName/InputName';
 import { GoodsSelect } from './GoodsSelect/GoodsSelect';
 import { ButtonsPanel } from './ButtonsPanel/ButtonsPanel';
-import { Cargo } from '../../../../../redux/redusers/cargoReducer';
+import { Cargo } from '../../../../redux/redusers/cargoReducer';
 import styles from './AddCargoForm.module.scss';
 
 interface AddCargoFormProps {
@@ -51,7 +51,7 @@ export const AddCargoForm: React.FC<AddCargoFormProps> = ({
         />
       </InputName>
       <GoodsSelect goods={cargo.goods} setCargo={setCargo} />
-      // todo ButtonsPanel перенести в AddDrawer
+      {/*// todo ButtonsPanel перенести в AddDrawer*/}
       <ButtonsPanel
         cargo={cargo}
         setCargo={setCargo}

@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
-import { AddDirectionForm } from './AddDirectionForm/AddDirectionForm';
 import { PlusOutlined } from '@ant-design/icons';
 
-//  todo вынести в /components как AddDrawer
+interface AddDrawerProps {
+  buttonText: string;
+  drawerTitle: string;
+  children: () => React.ReactElement;
+}
 
-export const AddDirectionPanel = () => {
+export const AddDrawer: React.FC<AddDrawerProps> = ({
+  buttonText,
+  drawerTitle,
+  children,
+}) => {
   const [openedDrawer, setOpenedDrawer] = useState<boolean>(false);
 
   const openDrawerHandler = (isOpen: boolean) => {
@@ -19,15 +26,15 @@ export const AddDirectionPanel = () => {
         icon={<PlusOutlined />}
         onClick={() => openDrawerHandler(true)}
       >
-        Add direction
+        {buttonText}
       </Button>
 
       <Drawer
-        title="Add direction form"
+        title={drawerTitle}
         visible={openedDrawer}
         onClose={() => openDrawerHandler(false)}
       >
-        <AddDirectionForm setOpenedDrawer={setOpenedDrawer} />
+        {children({ setOpenedDrawer })}
       </Drawer>
     </>
   );

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from 'antd';
-import { useAppDispatch } from '../../../../../../redux/hooks/basicHooks';
+import { useAppDispatch } from '../../../../../redux/hooks/basicHooks';
 import {
   addDirection,
   Direction,
-} from '../../../../../../redux/redusers/directionsReducer';
-import styles from '../../../../../Cargo/components/AddCargoPanel/AddCargoForm/ButtonsPanel/ButtonsPanel.module.scss'; // TODO вынести
+} from '../../../../../redux/redusers/directionsReducer';
+import styles from '../../../../Cargo/components/AddCargoForm/ButtonsPanel/ButtonsPanel.module.scss'; // TODO вынести
 
 interface ButtonsPanelProps {
   direction: Direction;

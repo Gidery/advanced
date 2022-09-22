@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Input, Typography } from 'antd';
-import { InputName } from '../../../../../components/InputName/InputName';
+import { InputName } from '../../../../components/InputName/InputName';
 import { CargoSelect } from './CargoSelect/CargoSelect';
 import { ButtonsPanel } from './ButtonsPanel/ButtonsPanel';
-import { Direction } from '../../../../../redux/redusers/directionsReducer';
-import commonStyles from '../../../../Cargo/components/AddCargoPanel/AddCargoForm/AddCargoForm.module.scss'; // TODO вынести
+import { Direction } from '../../../../redux/redusers/directionsReducer';
+import commonStyles from '../../../Cargo/components/AddCargoForm/AddCargoForm.module.scss'; // TODO вынести
 
 interface AddDirectionFormProps {
   setOpenedDrawer: React.Dispatch<React.SetStateAction<boolean>>;
@@ -74,7 +74,7 @@ export const AddDirectionForm: React.FC<AddDirectionFormProps> = ({
         processedCargo={direction.processedCargo}
         setDirection={setDirection}
       />
-      // todo ButtonsPanel перенести в AddDrawer
+      {/*// todo ButtonsPanel перенести в AddDrawer*/}
       <ButtonsPanel
         direction={direction}
         setDirection={setDirection}
