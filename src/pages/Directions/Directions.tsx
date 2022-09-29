@@ -11,7 +11,6 @@ export const Directions = () => {
   return (
     <>
       <AddDrawer buttonText="Add direction" drawerTitle="Add direction form">
-        // todo add types for this
         {({ setOpenedDrawer }) => (
           <AddDirectionForm setOpenedDrawer={setOpenedDrawer} />
         )}

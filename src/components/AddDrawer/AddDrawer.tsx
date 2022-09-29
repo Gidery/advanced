@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
+interface DrawerComponentProps {
+  setOpenedDrawer: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 interface AddDrawerProps {
   buttonText: string;
   drawerTitle: string;
-  children: () => React.ReactElement;
+  children: React.FC<DrawerComponentProps>;
 }
 
 export const AddDrawer: React.FC<AddDrawerProps> = ({

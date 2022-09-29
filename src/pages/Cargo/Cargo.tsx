@@ -11,7 +11,6 @@ export const Cargo = () => {
   return (
     <>
       <AddDrawer buttonText="Add cargo" drawerTitle="Add cargo form">
-        // todo add types for this
         {({ setOpenedDrawer }) => (
           <AddCargoForm setOpenedDrawer={setOpenedDrawer} />
         )}
