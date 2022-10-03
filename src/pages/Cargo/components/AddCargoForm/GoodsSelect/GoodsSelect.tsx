@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Input, InputNumber } from 'antd';
-import { Cargo, Goods } from '../../../../../../redux/redusers/cargoReducer';
+import { Cargo, Goods } from '../../../../../redux/redusers/cargoReducer';
 import { DeleteOutlined } from '@ant-design/icons';
 import styles from './GoodsSelect.module.scss';
 
