@@ -3,8 +3,8 @@ import { Button } from 'antd';
 import styles from './ButtonsPanel.module.scss';
 
 interface ButtonsPanelProps {
-  onSubmit: any;
-  clearForm: any;
+  onSubmit: () => void;
+  clearForm: () => void;
   submitText: string;
 }
 

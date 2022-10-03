@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, Select, Typography } from 'antd';
-import { useAppSelector } from '../../../../../redux/hooks/basicHooks';
+import { useAppSelector } from '../../../../../../redux/hooks/basicHooks';
 import {
   Direction,
   ProcessedCargo,
-} from '../../../../../redux/redusers/directionsReducer';
-import { Cargo } from '../../../../../redux/redusers/cargoReducer';
+} from '../../../../../../redux/redusers/directionsReducer';
+import { Cargo } from '../../../../../../redux/redusers/cargoReducer';
 import { DeleteOutlined } from '@ant-design/icons';
 import styles from './CargoSelect.module.scss';
 
